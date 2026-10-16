@@ -53,7 +53,12 @@ export function NivelSidebar({ nivel }: NivelSidebarProps) {
                         total={conceptosDelNivel.length}
                         porcentaje={porcentaje}
                     />
-                    <ScrollArea className="mt-4 max-h-[calc(100vh-20rem)]">
+                    {/* Base UI scrollea en el Viewport, que tiene
+                        height:100%; contra un Root de altura auto eso
+                        se resuelve como auto y el max-h del Root solo
+                        recorta sin scrollbar. Por eso el límite va
+                        directo sobre el Viewport. */}
+                    <ScrollArea className="mt-4 [&_[data-slot=scroll-area-viewport]]:max-h-[calc(100vh-20rem)]">
                         <ListaConceptos
                             conceptos={conceptosDelNivel}
                             rutaActiva={rutaActiva}
@@ -92,7 +97,7 @@ export function NivelSidebar({ nivel }: NivelSidebarProps) {
                                 {porcentaje}%
                             </p>
                         </div>
-                        <ScrollArea className="max-h-[calc(100vh-14rem)] px-4">
+                        <ScrollArea className="px-4 [&_[data-slot=scroll-area-viewport]]:max-h-[calc(100vh-14rem)]">
                             <ListaConceptos
                                 conceptos={conceptosDelNivel}
                                 rutaActiva={rutaActiva}
