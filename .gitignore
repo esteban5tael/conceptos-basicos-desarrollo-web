@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Salidas de la skill archify (candidato + HTML generado)
+.archify/

@@ -167,6 +167,10 @@ export function Header() {
                             </DropdownMenuGroup>
                         </DropdownMenuContent>
                     </DropdownMenu>
+
+                    <NavLink to="/arquitectura" className={clasesLinkNavegacion}>
+                        Arquitectura
+                    </NavLink>
                 </nav>
 
                 {/* Acciones: búsqueda, progreso y menú mobile */}
@@ -206,6 +210,16 @@ export function Header() {
                                     )}
                                 >
                                     Inicio
+                                </Link>
+                                <Link
+                                    to="/arquitectura"
+                                    onClick={() => setSheetAbierto(false)}
+                                    className={cn(
+                                        CLASES_LINK_NIVEL,
+                                        "text-sm text-muted-foreground hover:text-foreground",
+                                    )}
+                                >
+                                    Arquitectura
                                 </Link>
                                 <Separator className="my-2" />
                                 {niveles.map((nivel) => (

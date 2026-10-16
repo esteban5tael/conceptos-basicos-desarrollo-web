@@ -9,6 +9,7 @@ import { RootLayout } from "@/components/layout/root-layout";
 import { Home } from "@/pages/home";
 import { NivelPage } from "@/pages/nivel-page";
 import { ConceptoPage } from "@/pages/concepto-page";
+import { ArquitecturaPage } from "@/pages/arquitectura-page";
 import { NotFound } from "@/pages/not-found";
 
 /**
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
                 path: "concepto/:slug",
                 element: <ConceptoPage />,
                 handle: { crumb: "Concepto" },
+            },
+            {
+                path: "arquitectura",
+                element: <ArquitecturaPage />,
+                handle: { crumb: "Arquitectura" },
             },
             {
                 path: "*",
