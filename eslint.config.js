@@ -19,4 +19,13 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+  {
+    // shadcn/ui: los primitivos generados exportan helpers de
+    // variantes (cva) junto a los componentes, lo que rompe la
+    // regla de fast refresh. Se deshabilita solo en ui/.
+    files: ['src/components/ui/**/*.{ts,tsx}'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
+    },
+  },
 ])
