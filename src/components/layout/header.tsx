@@ -66,6 +66,8 @@ const CLASES_LINK_NIVEL = cn(
 export function Header() {
     const { scrollY } = useScroll();
     const [enScroll, setEnScroll] = useState(false);
+    const [menuAbierto, setMenuAbierto] = useState(false);
+    const [sheetAbierto, setSheetAbierto] = useState(false);
 
     // Muestra el borde/sombra solo después de desplazarse un poco.
     useMotionValueEvent(scrollY, "change", (valor) => {
@@ -110,7 +112,10 @@ export function Header() {
                         Inicio
                     </NavLink>
 
-                    <DropdownMenu>
+                    <DropdownMenu
+                        open={menuAbierto}
+                        onOpenChange={setMenuAbierto}
+                    >
                         <DropdownMenuTrigger
                             render={
                                 <Button
@@ -137,6 +142,7 @@ export function Header() {
                                     <Link
                                         key={nivel.id}
                                         to={`/nivel/${nivel.slug}`}
+                                        onClick={() => setMenuAbierto(false)}
                                         className={CLASES_LINK_NIVEL}
                                     >
                                         <span
@@ -167,7 +173,10 @@ export function Header() {
                 <div className="flex items-center gap-2">
                     <SearchTrigger />
                     <ProgressIndicator />
-                    <Sheet>
+                    <Sheet
+                        open={sheetAbierto}
+                        onOpenChange={setSheetAbierto}
+                    >
                         <SheetTrigger
                             render={
                                 <Button
@@ -190,6 +199,7 @@ export function Header() {
                             >
                                 <Link
                                     to="/"
+                                    onClick={() => setSheetAbierto(false)}
                                     className={cn(
                                         CLASES_LINK_NIVEL,
                                         "text-sm text-muted-foreground hover:text-foreground",
@@ -202,6 +212,7 @@ export function Header() {
                                     <Link
                                         key={nivel.id}
                                         to={`/nivel/${nivel.slug}`}
+                                        onClick={() => setSheetAbierto(false)}
                                         className={cn(
                                             CLASES_LINK_NIVEL,
                                             "text-sm text-muted-foreground hover:text-foreground",
